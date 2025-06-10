@@ -35,3 +35,11 @@ The superuser will have access to the admin panel and can assign appropriate rol
 ### 4️⃣ Open CVAT
 
 In your browser, go to [http://localhost:8080/tasks](http://localhost:8080/tasks) to access the CVAT interface.
+
+### 🛑 Stop CVAT
+
+To stop all running CVAT containers, use the following command:
+
+```bash
+docker compose down
+```
