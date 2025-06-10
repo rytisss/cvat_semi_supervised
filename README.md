@@ -63,3 +63,20 @@ After downloading the nuclio, give it a proper permission and do a softlink:
 sudo chmod +x nuctl-1.14.7-linux-amd64
 sudo ln -sf $(pwd)/nuctl-1.14.7-linux-amd64 /usr/local/bin/nuctl
 ```
+
+To bring up cvat with auto annotation tool, from cvat root directory, you need to run:
+
+```bash
+docker compose -f docker-compose.yml -f docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml up -d
+```
+
+NOTE to add **--build** in first run because *components/serverless/docker-compose.serverless.yml* was changed with 1.14.7 version for nuctl.
+
+To stop the containers, simply run:
+
+```bash
+docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml down
+```
+
+
+
