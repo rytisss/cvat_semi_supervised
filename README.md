@@ -31,3 +31,7 @@ docker exec -it cvat_server bash -ic 'python3 ~/manage.py createsuperuser'
 ```
 
 The superuser will have access to the admin panel and can assign appropriate roles and groups to other users.
+
+### 4️⃣ Open CVAT
+
+In your browser, go to [http://localhost:8080/tasks](http://localhost:8080/tasks) to access the CVAT interface.
