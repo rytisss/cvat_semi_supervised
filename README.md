@@ -43,3 +43,23 @@ To stop all running CVAT containers, use the following command:
 ```bash
 docker compose down
 ```
+
+## 🤖 Semi-automatic and Automatic Annotation
+
+Information about the installation of components needed for semi-automatic and automatic annotation.
+
+You have to install the `nuctl` command-line tool to build and deploy serverless functions. Download version **1.14.7** — it's important that the version matches the one defined in `docker-compose.serverless.yml`.
+
+For example, using `wget`:
+
+```bash
+wget https://github.com/nuclio/nuclio/releases/download/1.14.7/nuctl-1.14.7-linux-amd64
+```
+
+After downloading the nuclio, give it a proper permission and do a softlink:
+
+
+```bash
+sudo chmod +x nuctl-1.14.7-linux-amd64
+sudo ln -sf $(pwd)/nuctl-1.14.7-linux-amd64 /usr/local/bin/nuctl
+```
