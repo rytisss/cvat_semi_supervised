@@ -1,13 +1,16 @@
-# CVAT with semi-supervised annotation pipelines
-A customized CVAT (Computer Vision Annotation Tool) setup with integrated semi-supervised annotation workflows. This repository enables scalable, efficient data labeling using AI-assisted annotation models. Ideal for accelerating image and video annotation tasks in computer vision projects.  
+# ⚙️ CVAT with Semi-Supervised Annotation Pipelines
+
+A customized [CVAT (Computer Vision Annotation Tool)](https://www.cvat.ai/) setup with integrated semi-supervised annotation workflows. This repository enables scalable and efficient data labeling using AI-assisted annotation models — ideal for accelerating image and video annotation in computer vision projects.
+
+---
 
 ## 🚀 Core Installation
 
-This project relies on the [CVAT (Computer Vision Annotation Tool)](https://www.cvat.ai/) for annotation capabilities. Follow the steps below to download and set it up using Docker.
+Follow the steps below to install and run CVAT using Docker.
 
 ### 1️⃣ Clone the CVAT Repository
 
-Clone the official CVAT repository from GitHub. This command will clone the latest `develop` branch:
+Clone the official CVAT repository from GitHub (latest `develop` branch):
 
 ```bash
 git clone https://github.com/cvat-ai/cvat
@@ -16,67 +19,82 @@ cd cvat
 
 ### 2️⃣ Start CVAT with Docker
 
-Use Docker Compose to start the necessary containers. This will download CVAT and required services such as PostgreSQL and Redis.
+Start CVAT and its dependencies (PostgreSQL, Redis) using Docker Compose:
 
 ```bash
 docker compose up -d
 ```
 
-### 3️⃣ Create a Superuser (First-Time Setup)
+### 3️⃣ Create a Superuser
 
-When you register your first user, they will not have permissions to view tasks or perform administrative actions. To manage permissions, create a superuser using the command below:
+Create a superuser to gain full access:
 
 ```bash
 docker exec -it cvat_server bash -ic 'python3 ~/manage.py createsuperuser'
 ```
 
-The superuser will have access to the admin panel and can assign appropriate roles and groups to other users.
+This superuser can manage permissions and access the admin panel.
 
-### 4️⃣ Open CVAT
+### 4️⃣ Access the CVAT Interface
 
-In your browser, go to [http://localhost:8080/tasks](http://localhost:8080/tasks) to access the CVAT interface.
+Open CVAT in your browser at:
+
+[http://localhost:8080/tasks](http://localhost:8080/tasks)
 
 ### 🛑 Stop CVAT
 
-To stop all running CVAT containers, use the following command:
+To stop all running containers:
 
 ```bash
 docker compose down
 ```
 
-## 🤖 Semi-automatic and Automatic Annotation
+---
 
-Information about the installation of components needed for semi-automatic and automatic annotation.
+## 🤖 Semi-Automatic & Automatic Annotation Setup
 
-You have to install the `nuctl` command-line tool to build and deploy serverless functions. Download version **1.14.7** — it's important that the version matches the one defined in `docker-compose.serverless.yml`.
+To enable AI-assisted annotation, you'll need to install `nuctl`, the Nuclio CLI, and run CVAT with serverless support.
 
-For example, using `wget`:
+### 📥 Install `nuctl` (v1.14.7)
+
+> **Note:** Make sure the `nuctl` version matches the one defined in `docker-compose.serverless.yml` (v1.14.7).
+
+#### Linux
 
 ```bash
 wget https://github.com/nuclio/nuclio/releases/download/1.14.7/nuctl-1.14.7-linux-amd64
-```
-
-After downloading the nuclio, give it a proper permission and do a softlink:
-
-
-```bash
-sudo chmod +x nuctl-1.14.7-linux-amd64
+chmod +x nuctl-1.14.7-linux-amd64
 sudo ln -sf $(pwd)/nuctl-1.14.7-linux-amd64 /usr/local/bin/nuctl
 ```
 
-To bring up cvat with auto annotation tool, from cvat root directory, you need to run:
+#### macOS (Apple Silicon)
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.dev.yml -f components/serverless/docker-compose.serverless.yml up -d
+wget https://github.com/nuclio/nuclio/releases/download/1.14.7/nuctl-1.14.7-darwin-arm64
+chmod +x nuctl-1.14.7-darwin-arm64
+sudo ln -sf $(pwd)/nuctl-1.14.7-darwin-arm64 /usr/local/bin/nuctl
 ```
 
-NOTE to add **--build** in first run because *components/serverless/docker-compose.serverless.yml* was changed with 1.14.7 version for nuctl.
+---
 
-To stop the containers, simply run:
+### 🚢 Launch CVAT with Serverless Annotation Support
+
+From the CVAT root directory, start all services with serverless functions enabled:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml -f components/serverless/docker-compose.serverless.yml up -d --build
+```
+
+> 🛠️ **Note:** The `--build` flag is required the **first time** due to changes in the serverless configuration for `nuctl` v1.14.7.
+
+### 🛑 Stop CVAT with Serverless
+
+To shut down all containers (including serverless ones):
 
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.dev.yml -f components/serverless/docker-compose.serverless.yml down
 ```
 
+---
 
 
