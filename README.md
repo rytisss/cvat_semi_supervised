@@ -55,24 +55,16 @@ docker compose down
 
 To enable AI-assisted annotation, you'll need to install `nuctl`, the Nuclio CLI, and run CVAT with serverless support.
 
-### 📥 Install `nuctl` (v1.14.7)
+### 📥 Install `nuctl` (v1.13.0)
 
-> **Note:** Make sure the `nuctl` version matches the one defined in `docker-compose.serverless.yml` (v1.14.7).
+> **Note:** Make sure the `nuctl` version matches the one defined in `docker-compose.serverless.yml` (v1.13.0).
 
 #### Linux
 
 ```bash
-wget https://github.com/nuclio/nuclio/releases/download/1.14.7/nuctl-1.14.7-linux-amd64
-chmod +x nuctl-1.14.7-linux-amd64
-sudo ln -sf $(pwd)/nuctl-1.14.7-linux-amd64 /usr/local/bin/nuctl
-```
-
-#### macOS (Apple Silicon)
-
-```bash
-wget https://github.com/nuclio/nuclio/releases/download/1.14.7/nuctl-1.14.7-darwin-arm64
-chmod +x nuctl-1.14.7-darwin-arm64
-sudo ln -sf $(pwd)/nuctl-1.14.7-darwin-arm64 /usr/local/bin/nuctl
+wget https://github.com/nuclio/nuclio/releases/download/1.13.0/nuctl-1.13.0-linux-amd64
+chmod +x nuctl-1.13.0-linux-amd64
+sudo ln -sf $(pwd)/nuctl-1.13.0-linux-amd64 /usr/local/bin/nuctl
 ```
 
 ---
@@ -84,8 +76,6 @@ From the CVAT root directory, start all services with serverless functions enabl
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.dev.yml -f components/serverless/docker-compose.serverless.yml up -d --build
 ```
-
-> 🛠️ **Note:** The `--build` flag is required the **first time** due to changes in the serverless configuration for `nuctl` v1.14.7.
 
 ### 🛑 Stop CVAT with Serverless
 
