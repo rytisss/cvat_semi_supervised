@@ -96,6 +96,17 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml -f components/ser
 nuctl create project cvat
 ```
 
+### Launch Segment Anything model  
+Use scripts in serverless functions provided by CVAT. Deploy on CPU:  
+```bash
+serverless/deploy_cpu.sh serverless/pytorch/facebookresearch/sam/
+```
+
+Few results for cat segmentation:  
+
+https://github.com/user-attachments/assets/294ab384-95b5-41e1-a329-bb89a0cae7b7
+
+
 
 
 
