@@ -66,8 +66,13 @@ wget https://github.com/nuclio/nuclio/releases/download/1.13.0/nuctl-1.13.0-linu
 chmod +x nuctl-1.13.0-linux-amd64
 sudo ln -sf $(pwd)/nuctl-1.13.0-linux-amd64 /usr/local/bin/nuctl
 ```
+---  
 
----
+### 📥 Validate 'nuclt' installation  
+```bash
+nuctl get functions
+```
+Should output: *No functions found* if no function is installed  
 
 ### 🚢 Launch CVAT with Serverless Annotation Support
 
