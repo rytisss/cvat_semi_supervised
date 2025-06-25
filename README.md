@@ -89,7 +89,14 @@ To shut down all containers (including serverless ones):
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.dev.yml -f components/serverless/docker-compose.serverless.yml down
 ```
-
 ---
+
+### Create Nuclio project for CVAT  
+```bash
+nuctl create project cvat
+```
+
+
+
 
 
