@@ -106,7 +106,15 @@ Few results for cat segmentation:
 
 https://github.com/user-attachments/assets/294ab384-95b5-41e1-a329-bb89a0cae7b7
 
+## Launch your segmentation model  
+Create 2 files in the **serverless/cvdlink/your_model_name/** directory:  
+1. [**function.py**](https://github.com/rytisss/cvat_semi_supervised/blob/feature/segformer_sample/segformer_sample/function.py) with *def init_context(context)* and *def handler(context, event)* functions.
+2. [**function.yaml**](https://github.com/rytisss/cvat_semi_supervised/blob/feature/segformer_sample/segformer_sample/function.yaml) with configuration.
 
+Add it to the Nuclio:
+```bash
+serverless/deploy_cpu.sh serverless/cvdlink/your_model_name/
+```
 
 
 
