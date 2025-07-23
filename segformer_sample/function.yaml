@@ -1,0 +1,15 @@
+metadata:
+  name: segformer-ade20k
+spec:
+  runtime: python:3.12
+  handler: function:handler
+  init_context: function:init_context
+  description: "Semantic segmentation with Segformer B5 trained on ADE20k to segment various lanscape objects"
+  build:
+    commands:
+      - pip install torch==2.7.1 torchvision==0.22.1
+      - pip install segmentation-models-pytorch==0.5.0
+      - pip install albumentations==2.0.8
+      - pip install opencv-python-headless==4.12.0.88
+      - pip install pillow==11.3.0
+      - pip install numpy==2.2.6
