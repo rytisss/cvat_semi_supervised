@@ -111,9 +111,9 @@ Create 2 files in the **serverless/cvdlink/your_model_name/** directory:
 1. [**function.py**](https://github.com/rytisss/cvat_semi_supervised/blob/feature/segformer_sample/segformer_sample/function.py) with *def init_context(context)* and *def handler(context, event)* functions.
 2. [**function.yaml**](https://github.com/rytisss/cvat_semi_supervised/blob/feature/segformer_sample/segformer_sample/function.yaml) with configuration.
 
-Add it to the Nuclio:
+Add it to the Nuclio (it will start to build a container for serverless deployment):
 ```bash
-serverless/deploy_cpu.sh serverless/cvdlink/your_model_name/
+./serverless/deploy_cpu.sh ./serverless/pytorch/cvdlink/segformer_ADE20K/
 ```
 
 
