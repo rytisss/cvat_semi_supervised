@@ -74,12 +74,13 @@ def handler(context, event):
 
         label_name = get_label_name_by_id(context, class_id)
         context.logger.info(f'Detected {label_name}, {class_id}')
+        context.logger.info(polygon)
         results.append({
             "confidence" : str(threshold),
-            "label": str(class_id),
-            "points": polygon,
-            "type" : "mask",
-            "mask": binary_mask.tolist()
+            "label": label_name,
+            "points": [float(coord) for point in polygon for coord in point],
+            "type" : "polygon",
+            "mask": polygon
         })
 
         
